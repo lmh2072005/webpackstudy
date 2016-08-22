@@ -1,3 +1,4 @@
+
 /**
  * Created by Administrator on 16-8-22.
  * 通过webpack --config xxx.js调用不同的config
@@ -7,7 +8,8 @@ const webpack = require('webpack'); //webpack
 var path = require('path');
 module.exports = {
     entry: {
-        loadjsdemo : './src/loadjs.js'
+        loadjsdemo : './src/loadjs.js',
+        loadimgdemo : './src/loadimg.js'
     },
     output: {
         path: __dirname+'/bin', //绝对路径
@@ -43,6 +45,7 @@ module.exports = {
     ],
     module:{
         loaders:[
+           // { test: /\.png$/, loader: "url-loader?limit=10240" }
             //{test:/\.css$/,loader:"style-loader!css-loader"}
             //{test:/\.css$/, loader:ExtractTextPlugin.extract("style-loader", "css-loader")}
         ]
