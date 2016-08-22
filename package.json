@@ -1,0 +1,26 @@
+{
+  "name": "webpack-study",
+  "version": "0.0.1",
+  "description": "study",
+  "main": "index.js",
+  "scripts": {
+    "test": "app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "xxx"
+  },
+  "keywords": [
+    "study"
+  ],
+  "author": "aaron",
+  "license": "MIT",
+  "devDependencies": {
+    "gbk": "^0.1.0",
+    "html-webpack-plugin": "^2.21.0",
+    "webpack": "^1.13.1"
+  },
+  "dependencies": {
+    "webpack-encoding-plugin": "0.0.2"
+  }
+}
