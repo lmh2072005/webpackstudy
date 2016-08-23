@@ -13,14 +13,16 @@ module.exports = {
         loadjs : './src/loadjs.js',
         loadimg : './src/loadimg.js',
         loadcss : ['./src/loadcss.js','./src/css/a.css'], //将css和js打包到loadcssdemo.js里面
-        loadhtml : './src/loadhtml.js'
+        loadhtml : './src/loadhtml.js',
+        alias : './src/alias.js'
     },
     output: {  //打包后的输出目录
-        path: __dirname+'/bin', //绝对路径
-        filename: '[name].js',
-        chunkFilename:'[name].chunk.js',
+        path: __dirname+'/bin',
+        filename: '[name].js', //[hash] 、[chunkhash](根据内容生成md5值)
+        chunkFilename:'[name].chunk.js', //require.ensure用到，生成chunk的名字
         publicPath:'bin/'  //require.ensure用到，相对路径
     },
+    devtool: "#source-map",  //生成对应的map文件, map文件解释：http://www.ruanyifeng.com/blog/2013/01/javascript_source_map.html
     /*devServer: {
      historyApiFallback: true,
      hot: true,
@@ -28,14 +30,14 @@ module.exports = {
      progress: true
      },*/
     plugins: [
-        /*new webpack.optimize.UglifyJsPlugin({
-         compress: {
-         warnings: false
-         },
-         output: {
-         comments: false
-         }
-         }),*/
+        new webpack.optimize.UglifyJsPlugin({
+             compress: {
+                warnings: false
+             },
+             output: {
+                comments: false
+             }
+         }),
         /*new webpack.optimize.CommonsChunkPlugin({
          name: 'commons',
          filename: "commons.js", //输出的文件名
@@ -63,5 +65,10 @@ module.exports = {
             }
             //{test:/\.css$/, loader:ExtractTextPlugin.extract("style-loader", "css-loader")}
         ]
+    },
+    resolve :{
+        alias : {
+            'jquery' : path.join(__dirname, 'src/jquery-1.12.0.min.js') //__dirname当前目录，path.join路径合并
+        }
     }
 };
