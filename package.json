@@ -21,7 +21,11 @@
     "webpack": "^1.13.1"
   },
   "dependencies": {
+    "css-loader": "^0.23.1",
+    "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.9.0",
+    "html-loader": "^0.4.3",
+    "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack-encoding-plugin": "0.0.2"
   }
