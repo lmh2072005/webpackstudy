@@ -37,15 +37,14 @@ module.exports = {
              output: {
                 comments: false
              }
-         }),
+         })
         /*new webpack.optimize.CommonsChunkPlugin({
-         name: 'commons',
+         name: 'commons', //和配置的entry入口对应
          filename: "commons.js", //输出的文件名
          minChunks: Infinity
          // (Modules must be shared between 2 entries)
 
          // chunks: ["pageA", "pageB"],
-         // (Only use these entries)
          }),*/
         //new ExtractTextPlugin("[name].css")
     ],
@@ -67,8 +66,12 @@ module.exports = {
         ]
     },
     resolve :{
+        extentions:["","js"], //当requrie的模块找不到时，添加这些后缀
         alias : {
             'jquery' : path.join(__dirname, 'src/jquery-1.12.0.min.js') //__dirname当前目录，path.join路径合并
         }
     }
 };
+
+/*webpack uglify
+vue*/

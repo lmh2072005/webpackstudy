@@ -2,6 +2,7 @@
  * Created by Administrator on 2016/8/22.
  */
 //npm install html-loader --save
+//handlebars-loader
 
 $('#aaa').on('click', function(){
     require.ensure([], function(require){
