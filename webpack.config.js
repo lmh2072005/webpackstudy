@@ -12,15 +12,16 @@ module.exports = {
     entry: {
         loadjs : './src/loadjs.js',
         loadimg : './src/loadimg.js',
-        loadcss : ['./src/loadcss.js','./src/css/a.css'], //将css和js打包到loadcssdemo.js里面
+        loadcss : ['./src/loadcss.js','./src/css/a.css'], //将css和js打包到loadcss.js里面
         loadhtml : './src/loadhtml.js',
-        alias : './src/alias.js'
+        alias : './src/alias.js',
+        xxx : './src/alias.js'
     },
     output: {  //打包后的输出目录
         path: __dirname+'/bin',
         filename: '[name].js', //[hash] 、[chunkhash](根据内容生成md5值)
         chunkFilename:'[name].chunk.js', //require.ensure用到，生成chunk的名字
-        publicPath:'bin/'  //require.ensure用到，相对路径
+        publicPath:'bin/'  //require.ensure用到，相对路径，require.ensure会从publicPath加载文件,不写则默认是当前配置文件目录
     },
     devtool: "#source-map",  //生成对应的map文件, map文件解释：http://www.ruanyifeng.com/blog/2013/01/javascript_source_map.html
     /*devServer: {
@@ -32,19 +33,19 @@ module.exports = {
     plugins: [
         new webpack.optimize.UglifyJsPlugin({
              compress: {
-                warnings: false
+                warnings: false //压缩时是否显示告警信息
              },
              output: {
-                comments: false
+                comments: false //压缩后的文件是否有注释
              }
          })
         /*new webpack.optimize.CommonsChunkPlugin({
          name: 'commons', //和配置的entry入口对应
          filename: "commons.js", //输出的文件名
-         minChunks: Infinity
+         minChunks: Infinity //指一个文件至少被require几次才会被放到CommonChunk里，这一项一定要设置否则生成的common.js不会包含公共的文件
          // (Modules must be shared between 2 entries)
 
-         // chunks: ["pageA", "pageB"],
+         // chunks: ["pageA", "pageB"], //只提炼pageA、pageB里的公共文件
          }),*/
         //new ExtractTextPlugin("[name].css")
     ],
